@@ -18,7 +18,10 @@ export default class CreateDeck extends React.Component {
                 key: nameId
             }
             saveDeckTitle(data, nameId)
-            this.props.navigation.navigate('DeckList')
+            this.props.navigation.navigate(
+                'DeckDetail',
+                { entryId: nameId, title: this.state.name, count: 0 }
+            )
             this.setState({
                 name: '',
             })
