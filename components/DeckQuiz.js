@@ -82,6 +82,19 @@ class DeckQuiz extends Component {
             showAnswer: true,
         })
     }
+    restartQuiz = () => {
+        this.setState({
+            countNext: 0,
+            showAnswer: false,
+            answerPoint: 0,
+            finalResult: false,
+        })
+        const { fadeAnswerValue } = this.state
+        Animated.sequence([
+            Animated.timing(fadeAnswerValue, { duration: 500, toValue: 0}),
+            Animated.timing(fadeAnswerValue, { duration: 1000, toValue: 1}),
+        ]).start()
+    }
     render() {
         if(this.state.loading){
             return <ActivityIndicator style={{marginTop: 30}}/>
@@ -93,6 +106,9 @@ class DeckQuiz extends Component {
                         <Text style={styles.item}>You got {Math.round((this.state.answerPoint * 100) / this.state.count)}% of the questions</Text>
                     </View>
                     <View>
+                        <TouchableOpacity style={styles.buttonRestart} onPress={this.restartQuiz}>
+                            <Text style={{textAlign: 'center', fontSize: 20, color: white}}>Restart Quiz</Text>
+                        </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonBackToDeck} onPress={() => {this.props.navigation.goBack()}}>
                             <Text style={{textAlign: 'center', fontSize: 20}}>Back to Deck</Text>
                         </TouchableOpacity>
@@ -196,6 +212,14 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderRadius: 10,
     },
+    buttonRestart: {
+        margin: 10,
+        padding: 20,
+        borderColor: black,
+        backgroundColor: black,
+        borderWidth: 3,
+        borderRadius: 10,
+    }
 })
 
 
