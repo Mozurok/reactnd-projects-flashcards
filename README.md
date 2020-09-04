@@ -6,6 +6,6 @@ Projeto para a Nanodegree Udacity - Flashcards
 Basta seguir os passos abaixo
 * Instalando e iniciando o projeto - Aviso projeto testado em emulador Android
     - `git clone https://github.com/Mozurok/reactnd-projects-flashcards.git`
-    - `yarn install`
     - `cd reactnd-projects-flashcards`
+    - `yarn install`
     - `yarn start`
